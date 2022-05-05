@@ -1,0 +1,38 @@
+GET http://localhost:8080/api/guitar
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+
+###
+POST http://localhost:8080/api/guitar
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"make": "Taylor","model": "914"}
+###
+
+POST http://localhost:8080/api/guitar/inventory?id=2&quantity=4
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+
+###
+
+GET http://localhost:8080/api/guitar/inventory?inStock=false
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+
+###
+
+GET https://localhost:8443
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+
+###

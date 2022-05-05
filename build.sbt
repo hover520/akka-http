@@ -2,7 +2,7 @@ name := "akka-http"
 
 version := "0.1"
 
-scalaVersion := "2.12.8"
+scalaVersion := "2.12.15"
 
 val akkaVersion = "2.5.20"
 val akkaHttpVersion = "10.1.7"
