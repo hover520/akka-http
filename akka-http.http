@@ -29,7 +29,7 @@ Content-Type: application/json
 
 ###
 
-GET https://localhost:8443
+GET http://localhost:8080/controlEndpoint
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
