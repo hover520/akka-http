@@ -73,7 +73,7 @@ class GuitarDB extends Actor with ActorLogging {
 
 // step 2
 trait GuitarStoreJsonProtocol extends DefaultJsonProtocol {
-  // step3 : guitarFormat 不能写成别的，否则 POST 会报错
+  // step3 :
   implicit val guitarFormat = jsonFormat3(Guitar)
 }
 
