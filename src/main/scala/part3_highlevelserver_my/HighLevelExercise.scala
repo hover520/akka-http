@@ -114,9 +114,25 @@ object HighLevelExercise extends App with PersonStoreJsonProtocol{
         // 3： insert a person into my "database"
         val entityStrictFuture = request.entity.toStrict(3 seconds)
         val entityFuture: Future[Person] = entityStrictFuture.map(_.data.utf8String.parseJson.convertTo[Person])
-        var code = StatusCodes.OK
+
+        onComplete(entityFuture){
+          case Success(person) =>
+            log.info(s"Get $person , and insert into DB  ")
+            val result: Future[CreateSuccess] = (personDb ? CreatePerson(person)).mapTo[CreateSuccess]
+            onComplete(result){
+              case Success(result) =>
+                log.info(s"${result.pin} created")
+                complete(StatusCodes.OK)
+              case Failure(exception) =>
+                log.warning(s"failed  created with : $exception")
+                failWith(exception)
+            }
+          case Failure(ex) =>
+            failWith(ex)
+        }
+
         // "side-effects"
-        entityFuture.onComplete {
+        /*entityFuture.onComplete {
           case Success(person) =>
             log.info(s"Get $person , and insert into DB  ")
             val result: Future[CreateSuccess] = (personDb ? CreatePerson(person)).mapTo[CreateSuccess]
@@ -133,7 +149,7 @@ object HighLevelExercise extends App with PersonStoreJsonProtocol{
         .map(_ => StatusCodes.OK)
         .recover{
           case _ => StatusCodes.InternalServerError
-        })
+        })*/
       }
     }
 
