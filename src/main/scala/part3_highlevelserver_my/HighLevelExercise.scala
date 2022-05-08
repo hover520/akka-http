@@ -86,7 +86,7 @@ object HighLevelExercise extends App with PersonStoreJsonProtocol{
     pathPrefix("api" / "people") {
       get {
         (path(IntNumber) | parameter('pin.as[Int])) {pin =>
-          // TODo 1: fetch the person with the pin
+          // 1: fetch the person with the pin
           println(pin)
           val personFuture: Future[Option[Person]] = (personDb ? FindPerson(pin)).mapTo[Option[Person]]
           val personEntity = personFuture.map { person =>
@@ -98,7 +98,7 @@ object HighLevelExercise extends App with PersonStoreJsonProtocol{
           complete(personEntity)
         } ~
         pathEndOrSingleSlash {
-          // TODO 2: fetch all the people
+          // 2: fetch all the people
           val personsFuture: Future[List[Person]] = (personDb ? FindAllPersons).mapTo[List[Person]]
           val personsEntity = personsFuture.map { persons =>
             HttpEntity(
@@ -111,7 +111,7 @@ object HighLevelExercise extends App with PersonStoreJsonProtocol{
 
       } ~
       (post & pathEndOrSingleSlash & extractRequest & extractLog) {(request,log)=>
-        // TODO 3： insert a person into my "database"
+        // 3： insert a person into my "database"
         val entityStrictFuture = request.entity.toStrict(3 seconds)
         val entityFuture: Future[Person] = entityStrictFuture.map(_.data.utf8String.parseJson.convertTo[Person])
         var code = StatusCodes.OK
