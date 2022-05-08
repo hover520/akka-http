@@ -44,7 +44,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/api/player
+GET http://localhost:8080/api/people
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
