@@ -29,7 +29,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/controlEndpoint
+POST http://localhost:8080/api/myEndpoint?id3=2
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
