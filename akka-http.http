@@ -36,7 +36,6 @@ Content-Type: application/json
 
 
 ###
-
 GET http://localhost:8080/api/people/10
 Accept: */*
 Cache-Control: no-cache
@@ -45,13 +44,22 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8080/api/people
+GET http://localhost:8080/api/player
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+
+###
+
+DELETE http://localhost:8080/api/player
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
 {
-  "name": "PMN",
-  "pin": 10
+  "nickName": "HoverKan",
+  "characterClass": "Lover",
+  "level": 10
 }
 ###
