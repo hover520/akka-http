@@ -11,6 +11,16 @@ import spray.json._
 import scala.util.{Failure, Success}
 
 /**
+  * Akka HTTP client: the connection-level API
+  *   val connectionFlow = Http().outgoingConnection("http://my.com")
+  * A Connection works as a Flow[HttpRequest,HttpResponse,_]
+  *  - send one-off requests (not recommended)
+  *  - work with streams of requests and responses
+  *  requestSource.via(connectionFlow).to(Sink.head).run()
+  *
+  * HTTPS: pass in a connection context
+  *   val connectionFlow = Http().outgoingConnectionHttps("http://my.com", httpsConnContext)
+  *
   * @author : HoverKan
   * @version : 1.0.0 :: 2022-05-09 14:26
   */
