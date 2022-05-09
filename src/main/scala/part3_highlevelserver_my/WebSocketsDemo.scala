@@ -18,7 +18,7 @@ object WebSocketsDemo extends App {
   // Message: TextMessage vs BinaryMessage
 
   val textMessage = TextMessage(Source.single("hello via a text message"))
-  val binaryMessage = BinaryMessage(Source.single("hello via a binary message"))
+//  val binaryMessage = BinaryMessage(Source.single("hello via a binary message"))
 
 
 
